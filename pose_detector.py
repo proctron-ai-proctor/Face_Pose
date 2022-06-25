@@ -58,14 +58,13 @@ class PoseDetector:
                 "y_frontal": Yfrontal
               }
 
-            red = (255, 25, 0)
-            cv2.putText(frame, "Roll: {0:.2f} (-50 to +50)".format(self._values_dict["roll"]), (10,90), font, font_size, red, 1)  
-            cv2.putText(frame, "Yaw: {0:.2f} (-100 to +100)".format(self._values_dict["yaw"]), (10,100), font, font_size, red, 1)
-            cv2.putText(frame, "Pitch: {0:.2f} (0 to 4)".format(self._values_dict["pitch"]), (10,110), font, font_size, red, 1)
+            cv2.putText(frame, "Roll: {0:.2f} (-50 to +50)".format(self._values_dict["roll"]), (10,90), font, font_size, (255, 25, 0), 1)  
+            cv2.putText(frame, "Yaw: {0:.2f} (-100 to +100)".format(self._values_dict["yaw"]), (10,100), font, font_size, (255, 25, 0), 1)
+            cv2.putText(frame, "Pitch: {0:.2f} (0 to 4)".format(self._values_dict["pitch"]), (10,110), font, font_size, (255, 25, 0), 1)
             # cv2.putText(frame, "smiles: {}, neutrals: {}, idframes: {}".format(Nsmiles, Nneutrals, Nframesperid), (10,460), font, font_size, blue, 1)
             
-            cv2.putText(frame, "Xfrontal: {0:.2f}".format(self._values_dict["x_frontal"]), (10,130), font, font_size, red, 1)
-            cv2.putText(frame, "Yfrontal: {0:.2f}".format(self._values_dict["y_frontal"]), (10,140), font, font_size, red, 1)   
+            cv2.putText(frame, "Xfrontal: {0:.2f}".format(self._values_dict["x_frontal"]), (10,130), font, font_size, (255, 25, 0), 1)
+            cv2.putText(frame, "Yfrontal: {0:.2f}".format(self._values_dict["y_frontal"]), (10,140), font, font_size, (255, 25, 0), 1)   
 
         self._output_frame = frame
         self._bbs = bbs
@@ -82,8 +81,7 @@ class PoseDetector:
             
     def _draw_landmarks(self, frame, bb, points):
         # draw rectangle and landmarks on face
-        orange = (255, 165, 0)
-        cv2.rectangle(frame, (int(bb[0]), int(bb[1])), (int(bb[2]), int(bb[3])), orange, 2)
+        cv2.rectangle(frame, (int(bb[0]), int(bb[1])), (int(bb[2]), int(bb[3])), (255, 165, 0), 2)
         # eyes
         # cv2.circle(img, center, radius, color, thickness=1, lineType=8, shift=0) → None
         cv2.circle(frame, (int(points[0]), int(points[5])), 2, (255,0,0), 2)
