@@ -4,6 +4,9 @@ import cv2
 
 from mtcnn.mtcnn import MTCNN
 
+red = (255, 50, 0)
+orange = (255, 165, 0)
+
 class PoseDetector:
     def __init__(self, retinafaceModelPath) -> None:
         self._mtcnn_detector = MTCNN()
