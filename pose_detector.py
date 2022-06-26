@@ -25,6 +25,13 @@ class PoseDetector:
 
     def refresh(self, frame):
         self._frame = frame.copy()
+        self._values_dict = {
+            "roll": None,
+            "yaw": None,
+            "pitch": None,
+            "x_frontal": None,
+            "y_frontal": None
+        }
         self._analyze()
     
     def _analyze(self):
@@ -34,7 +41,6 @@ class PoseDetector:
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         pointss_all, bbs_all, scores_all, _ = self._face_detector(frame_rgb, image_shape_max=640, score_min=0.95, pixel_min=20, pixel_max=1000, Ain_min=90)
     
-        self._values_dict = {}
         if len(pointss_all) == 0 or len(bbs_all) == 0 or len(scores_all) == 0:
             # face detection
             bbs_all, pointss_all = self._mtcnn_detector.detect_faces(frame_rgb)
