@@ -47,6 +47,7 @@ class PoseDetector:
         bbs = bbs_all.copy()
         pointss = pointss_all.copy()
     
+        self._values_dict = {}
         # if at least one face is detected
         if len(bbs_all) > 0:
             # process only one face (center ?)  
